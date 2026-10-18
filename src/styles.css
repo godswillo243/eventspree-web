@@ -1,0 +1,324 @@
+@import "tailwindcss";
+
+@theme {
+  /* ── Font ── */
+  --font-sans: "Inter", sans-serif;
+
+  /* ── Primary (Indigo) ── */
+  --color-primary-50: #eef2ff;
+  --color-primary-100: #e0e7ff;
+  --color-primary-300: #a5b4fc;
+  --color-primary-500: #6366f1;
+  --color-primary-600: #4f46e5;
+  --color-primary-700: #4338ca;
+
+  /* ── Neutral (Gray) ── */
+  --color-neutral-0: #ffffff;
+  --color-neutral-50: #f9fafb;
+  --color-neutral-100: #f3f4f6;
+  --color-neutral-200: #e5e7eb;
+  --color-neutral-400: #9ca3af;
+  --color-neutral-600: #4b5563;
+  --color-neutral-800: #1f2937;
+  --color-neutral-900: #111827;
+
+  /* ── Semantic ── */
+  --color-success-50: #ecfdf5;
+  --color-success-500: #10b981;
+  --color-success-700: #047857;
+
+  --color-warning-50: #fffbeb;
+  --color-warning-500: #f59e0b;
+  --color-warning-700: #b45309;
+
+  --color-danger-50: #fef2f2;
+  --color-danger-500: #ef4444;
+  --color-danger-700: #b91c1c;
+
+  --color-info-50: #eff6ff;
+  --color-info-500: #3b82f6;
+  --color-info-700: #1d4ed8;
+
+  /* ── Accent ── */
+  --color-accent-500: #d97706;
+
+  /* ── Typography ── */
+  --text-h1: 36px;
+  --text-h1--line-height: 40px;
+  --text-h1--font-weight: 700;
+
+  --text-h2: 24px;
+  --text-h2--line-height: 32px;
+  --text-h2--font-weight: 700;
+
+  --text-h3: 18px;
+  --text-h3--line-height: 28px;
+  --text-h3--font-weight: 600;
+
+  --text-body-lg: 16px;
+  --text-body-lg--line-height: 24px;
+  --text-body-lg--font-weight: 400;
+
+  --text-body: 14px;
+  --text-body--line-height: 20px;
+  --text-body--font-weight: 400;
+
+  --text-body-sm: 13px;
+  --text-body-sm--line-height: 18px;
+  --text-body-sm--font-weight: 400;
+
+  --text-caption: 12px;
+  --text-caption--line-height: 16px;
+  --text-caption--font-weight: 500;
+
+  --text-btn: 14px;
+  --text-btn--line-height: 20px;
+  --text-btn--font-weight: 600;
+
+  /* ── Spacing ── */
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 20px;
+  --spacing-6: 24px;
+  --spacing-8: 32px;
+  --spacing-10: 40px;
+  --spacing-12: 48px;
+  --spacing-16: 64px;
+
+  /* ── Border Radius ── */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+
+  /* ── Shadows ── */
+  --shadow-sm: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0px 4px 6px rgba(0, 0, 0, 0.07);
+  --shadow-lg: 0px 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  width: 100%;
+  height: 100dvh;
+}
+
+/* ═══════════════════════════════════════════
+   TYPOGRAPHY
+   ═══════════════════════════════════════════ */
+
+@utility heading-1 {
+  @apply text-h1 text-neutral-900;
+}
+
+@utility heading-2 {
+  @apply text-h2 text-neutral-900;
+}
+
+@utility heading-3 {
+  @apply text-h3 text-neutral-800;
+}
+
+@utility prose-body {
+  @apply text-body-lg text-neutral-600;
+}
+
+@utility prose-default {
+  @apply text-body text-neutral-600;
+}
+
+@utility prose-sm {
+  @apply text-body-sm text-neutral-600;
+}
+
+@utility caption {
+  @apply text-caption text-neutral-600;
+}
+
+/* ═══════════════════════════════════════════
+   LINKS
+   ═══════════════════════════════════════════ */
+
+@utility link {
+  @apply text-primary-600 hover:text-primary-700 underline underline-offset-2 transition-colors duration-300;
+}
+
+@utility link-muted {
+  @apply text-neutral-600 hover:text-neutral-800 transition-colors duration-300;
+}
+
+@utility link-disabled {
+  @apply text-neutral-400 cursor-not-allowed;
+}
+
+/* ═══════════════════════════════════════════
+   BUTTONS
+   ═══════════════════════════════════════════ */
+
+@utility button {
+  @apply cursor-pointer px-6 py-2 text-btn font-semibold transition-all duration-300
+   rounded-md active:translate-y-0.5 disabled:bg-neutral-200 disabled:text-neutral-400
+   disabled:cursor-not-allowed flex items-center gap-1.5 [&_svg]:size-4
+   focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2;
+}
+
+@utility button-primary {
+  @apply button bg-primary-500 text-neutral-0 hover:bg-primary-600 active:bg-primary-600;
+}
+
+@utility button-secondary {
+  @apply button bg-neutral-0 border border-neutral-200 text-neutral-800 hover:bg-neutral-100;
+}
+
+@utility button-danger {
+  @apply button bg-danger-500 text-neutral-0 hover:bg-danger-700 active:bg-danger-700;
+}
+
+@utility button-ghost {
+  @apply button bg-transparent text-primary-600 hover:bg-primary-50 active:bg-primary-100;
+}
+
+/* ═══════════════════════════════════════════
+   CARDS
+   ═══════════════════════════════════════════ */
+
+@utility card {
+  @apply bg-neutral-0 border border-neutral-200 rounded-lg shadow-sm p-4;
+}
+
+@utility card-elevated {
+  @apply bg-neutral-0 rounded-lg shadow-md p-4;
+}
+
+@utility card-hover {
+  @apply bg-neutral-0 border border-neutral-200 rounded-lg shadow-sm p-4 hover:shadow-md transition-shadow duration-300;
+}
+
+@utility card-header {
+  @apply flex items-center justify-between mb-3;
+}
+
+/* ═══════════════════════════════════════════
+   BADGES
+   ═══════════════════════════════════════════ */
+
+@utility badge {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-caption font-medium;
+}
+
+@utility badge-success {
+  @apply badge bg-success-50 text-success-700;
+}
+
+@utility badge-warning {
+  @apply badge bg-warning-50 text-warning-700;
+}
+
+@utility badge-danger {
+  @apply badge bg-danger-50 text-danger-700;
+}
+
+@utility badge-info {
+  @apply badge bg-info-50 text-info-700;
+}
+
+@utility badge-neutral {
+  @apply badge bg-neutral-100 text-neutral-600;
+}
+
+@utility badge-featured {
+  @apply badge bg-accent-500/10 text-accent-500 ring-1 ring-accent-500/30;
+}
+
+/* ═══════════════════════════════════════════
+   FORMS
+   ═══════════════════════════════════════════ */
+
+@utility label {
+  @apply text-body font-medium text-neutral-800 mb-1.5 block;
+}
+
+@utility input {
+  @apply w-full px-3.5 py-2 text-body border border-neutral-200 rounded-sm
+         bg-neutral-100
+         focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 focus:bg-neutral-0
+         placeholder:text-neutral-400
+         disabled:bg-neutral-50 disabled:text-neutral-400;
+}
+
+@utility input-error {
+  @apply input border-danger-500 focus:ring-danger-500 focus:border-danger-500;
+}
+
+@utility helper-text {
+  @apply text-caption text-neutral-600 mt-1.5;
+}
+
+@utility error-text {
+  @apply text-caption text-danger-700 mt-1.5;
+}
+
+/* ═══════════════════════════════════════════
+   AVATARS
+   ═══════════════════════════════════════════ */
+
+@utility avatar {
+  @apply rounded-full overflow-hidden flex items-center justify-center bg-neutral-200 text-neutral-600 font-medium;
+}
+
+@utility avatar-sm {
+  @apply avatar w-6 h-6 text-caption;
+}
+
+@utility avatar-md {
+  @apply avatar w-8 h-8 text-body-sm;
+}
+
+@utility avatar-lg {
+  @apply avatar w-10 h-10 text-body;
+}
+
+/* ═══════════════════════════════════════════
+   LAYOUT
+   ═══════════════════════════════════════════ */
+
+@utility layout-container {
+  @apply max-w-7xl mx-auto px-6 py-12;
+}
+
+@utility layout-section {
+  @apply space-y-6;
+}
+
+@utility layout-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+}
+
+/* ═══════════════════════════════════════════
+   MISC
+   ═══════════════════════════════════════════ */
+
+@utility divider {
+  @apply border-t border-neutral-200;
+}
+
+@utility banner-info {
+  @apply bg-info-50 text-info-700 rounded-md px-4 py-3 text-body;
+}
+
+@utility banner-success {
+  @apply bg-success-50 text-success-700 rounded-md px-4 py-3 text-body;
+}
+
+@utility banner-warning {
+  @apply bg-warning-50 text-warning-700 rounded-md px-4 py-3 text-body;
+}
+
+@utility banner-danger {
+  @apply bg-danger-50 text-danger-700 rounded-md px-4 py-3 text-body;
+}
