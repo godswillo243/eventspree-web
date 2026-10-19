@@ -15,8 +15,12 @@ import { Route as authLoginRouteImport } from './routes/(auth)/login'
 import { Route as authSignupRouteImport } from './routes/(auth)/signup'
 import { Route as publicIndexRouteImport } from './routes/(public)/index'
 import { Route as publicBrowseRouteImport } from './routes/(public)/browse'
+import { Route as publicContactRouteImport } from './routes/(public)/contact'
+import { Route as publicListYourBusinessRouteImport } from './routes/(public)/list-your-business'
 import { Route as publicPrivacyRouteImport } from './routes/(public)/privacy'
 import { Route as publicTermsRouteImport } from './routes/(public)/terms'
+import { Route as publicVendorsIdRouteImport } from './routes/(public)/vendors.$id'
+import { Route as publicVenuesIdRouteImport } from './routes/(public)/venues.$id'
 
 const authRouteRoute = authRouteRouteImport.update({
   id: '/(auth)',
@@ -46,6 +50,16 @@ const publicBrowseRoute = publicBrowseRouteImport.update({
   path: '/browse',
   getParentRoute: () => publicRouteRoute,
 } as any)
+const publicContactRoute = publicContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => publicRouteRoute,
+} as any)
+const publicListYourBusinessRoute = publicListYourBusinessRouteImport.update({
+  id: '/list-your-business',
+  path: '/list-your-business',
+  getParentRoute: () => publicRouteRoute,
+} as any)
 const publicPrivacyRoute = publicPrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
@@ -56,22 +70,40 @@ const publicTermsRoute = publicTermsRouteImport.update({
   path: '/terms',
   getParentRoute: () => publicRouteRoute,
 } as any)
+const publicVendorsIdRoute = publicVendorsIdRouteImport.update({
+  id: '/vendors/$id',
+  path: '/vendors/$id',
+  getParentRoute: () => publicRouteRoute,
+} as any)
+const publicVenuesIdRoute = publicVenuesIdRouteImport.update({
+  id: '/venues/$id',
+  path: '/venues/$id',
+  getParentRoute: () => publicRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/login': typeof authLoginRoute
   '/signup': typeof authSignupRoute
   '/browse': typeof publicBrowseRoute
+  '/contact': typeof publicContactRoute
+  '/list-your-business': typeof publicListYourBusinessRoute
   '/privacy': typeof publicPrivacyRoute
   '/terms': typeof publicTermsRoute
   '/': typeof publicIndexRoute
+  '/vendors/$id': typeof publicVendorsIdRoute
+  '/venues/$id': typeof publicVenuesIdRoute
 }
 export interface FileRoutesByTo {
   '/login': typeof authLoginRoute
   '/signup': typeof authSignupRoute
   '/browse': typeof publicBrowseRoute
+  '/contact': typeof publicContactRoute
+  '/list-your-business': typeof publicListYourBusinessRoute
   '/privacy': typeof publicPrivacyRoute
   '/terms': typeof publicTermsRoute
   '/': typeof publicIndexRoute
+  '/vendors/$id': typeof publicVendorsIdRoute
+  '/venues/$id': typeof publicVenuesIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -80,15 +112,39 @@ export interface FileRoutesById {
   '/(auth)/login': typeof authLoginRoute
   '/(auth)/signup': typeof authSignupRoute
   '/(public)/browse': typeof publicBrowseRoute
+  '/(public)/contact': typeof publicContactRoute
+  '/(public)/list-your-business': typeof publicListYourBusinessRoute
   '/(public)/privacy': typeof publicPrivacyRoute
   '/(public)/terms': typeof publicTermsRoute
   '/(public)/': typeof publicIndexRoute
+  '/(public)/vendors/$id': typeof publicVendorsIdRoute
+  '/(public)/venues/$id': typeof publicVenuesIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/login' | '/signup' | '/browse' | '/privacy' | '/terms' | '/'
+  fullPaths:
+    | '/login'
+    | '/signup'
+    | '/browse'
+    | '/contact'
+    | '/list-your-business'
+    | '/privacy'
+    | '/terms'
+    | '/'
+    | '/vendors/$id'
+    | '/venues/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/login' | '/signup' | '/browse' | '/privacy' | '/terms' | '/'
+  to:
+    | '/login'
+    | '/signup'
+    | '/browse'
+    | '/contact'
+    | '/list-your-business'
+    | '/privacy'
+    | '/terms'
+    | '/'
+    | '/vendors/$id'
+    | '/venues/$id'
   id:
     | '__root__'
     | '/(auth)'
@@ -96,9 +152,13 @@ export interface FileRouteTypes {
     | '/(auth)/login'
     | '/(auth)/signup'
     | '/(public)/browse'
+    | '/(public)/contact'
+    | '/(public)/list-your-business'
     | '/(public)/privacy'
     | '/(public)/terms'
     | '/(public)/'
+    | '/(public)/vendors/$id'
+    | '/(public)/venues/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -150,6 +210,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof publicBrowseRouteImport
       parentRoute: typeof publicRouteRoute
     }
+    '/(public)/contact': {
+      id: '/(public)/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof publicContactRouteImport
+      parentRoute: typeof publicRouteRoute
+    }
+    '/(public)/list-your-business': {
+      id: '/(public)/list-your-business'
+      path: '/list-your-business'
+      fullPath: '/list-your-business'
+      preLoaderRoute: typeof publicListYourBusinessRouteImport
+      parentRoute: typeof publicRouteRoute
+    }
     '/(public)/privacy': {
       id: '/(public)/privacy'
       path: '/privacy'
@@ -162,6 +236,20 @@ declare module '@tanstack/react-router' {
       path: '/terms'
       fullPath: '/terms'
       preLoaderRoute: typeof publicTermsRouteImport
+      parentRoute: typeof publicRouteRoute
+    }
+    '/(public)/vendors/$id': {
+      id: '/(public)/vendors/$id'
+      path: '/vendors/$id'
+      fullPath: '/vendors/$id'
+      preLoaderRoute: typeof publicVendorsIdRouteImport
+      parentRoute: typeof publicRouteRoute
+    }
+    '/(public)/venues/$id': {
+      id: '/(public)/venues/$id'
+      path: '/venues/$id'
+      fullPath: '/venues/$id'
+      preLoaderRoute: typeof publicVenuesIdRouteImport
       parentRoute: typeof publicRouteRoute
     }
   }
@@ -183,16 +271,24 @@ const authRouteRouteWithChildren = authRouteRoute._addFileChildren(
 
 interface publicRouteRouteChildren {
   publicBrowseRoute: typeof publicBrowseRoute
+  publicContactRoute: typeof publicContactRoute
+  publicListYourBusinessRoute: typeof publicListYourBusinessRoute
   publicPrivacyRoute: typeof publicPrivacyRoute
   publicTermsRoute: typeof publicTermsRoute
   publicIndexRoute: typeof publicIndexRoute
+  publicVendorsIdRoute: typeof publicVendorsIdRoute
+  publicVenuesIdRoute: typeof publicVenuesIdRoute
 }
 
 const publicRouteRouteChildren: publicRouteRouteChildren = {
   publicBrowseRoute: publicBrowseRoute,
+  publicContactRoute: publicContactRoute,
+  publicListYourBusinessRoute: publicListYourBusinessRoute,
   publicPrivacyRoute: publicPrivacyRoute,
   publicTermsRoute: publicTermsRoute,
   publicIndexRoute: publicIndexRoute,
+  publicVendorsIdRoute: publicVendorsIdRoute,
+  publicVenuesIdRoute: publicVenuesIdRoute,
 }
 
 const publicRouteRouteWithChildren = publicRouteRoute._addFileChildren(
